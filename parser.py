@@ -1,5 +1,4 @@
 import csv
-
 import requests
 
 # collect_openalex собирает данные в формат json и в дальнейшем преобразует их в список.
@@ -33,21 +32,28 @@ def collect_openalex():
     return all_works
 
 
-# file_writer(data) преобразовывает полученный список в csv файл. Я записала не все параметры, без понятия,
-# понадобятся они или нет. Добавить не трудно. Кодировку стоит прописывать, иначе ругается на непонятные символы
+# file_writer(data) преобразовывает полученный список в csv файл.
 
 
 def file_writer(data):
     with open('pr_bas_learn.csv', 'w',encoding="utf-8") as file:
         a_pen = csv.writer(file)
-        a_pen.writerow(('id', 'title', 'publication_year', 'concepts', 'referenced_works', 'related_works'))
+        a_pen.writerow(('id', 'title','concepts','abstract_inverted_index','authorships','best_oa_location','biblio','cited_by_api_url',
+                        'cited_by_count','counts_by_year','doi','is_retracted','locations',
+                        'primary_location','publication_date','type',
+                        'updated_date',
+                        'publication_year','referenced_works', 'related_works'))
         for works in data:
             concepts=[]
-            for i in works['concepts']: 
+            for i in works['concepts']:
                 concepts.append(i['display_name']) #тут просто решила записать только названия "концепций"
             a_pen.writerow((works['id'], works['title'], works['publication_year'],
-                           concepts,
-                           works['referenced_works'], works['related_works']))
+                           concepts,works['abstract_inverted_index'],works['authorships'],works['best_oa_location'],works['biblio'],
+                            works['cited_by_api_url'],works['cited_by_count'],works['counts_by_year'],works['doi'],
+                           works['is_retracted'],works['locations'],
+                        works['primary_location'],works['publication_date'],works['type'],
+                        works['updated_date'],
+                           works['referenced_works']))
 
 
 work_for_write = collect_openalex()
