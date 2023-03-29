@@ -38,7 +38,7 @@ def collect_openalex():
 def file_writer(data):
     with open('pr_bas_learn.csv', 'w',encoding="utf-8") as file:
         a_pen = csv.writer(file)
-        a_pen.writerow(('id', 'title','concepts','abstract_inverted_index','authorships','best_oa_location','biblio','cited_by_api_url',
+        a_pen.writerow(('id', 'title','concepts','authorships','best_oa_location','biblio','cited_by_api_url',
                         'cited_by_count','counts_by_year','doi','is_retracted','locations',
                         'primary_location','publication_date','type',
                         'updated_date',
@@ -47,13 +47,11 @@ def file_writer(data):
             concepts=[]
             for i in works['concepts']:
                 concepts.append(i['display_name']) #тут просто решила записать только названия "концепций"
-            a_pen.writerow((works['id'], works['title'], works['publication_year'],
-                           concepts,works['abstract_inverted_index'],works['authorships'],works['best_oa_location'],works['biblio'],
-                            works['cited_by_api_url'],works['cited_by_count'],works['counts_by_year'],works['doi'],
-                           works['is_retracted'],works['locations'],
+            a_pen.writerow((works['id'], works['title'],concepts,works['authorships'],works['best_oa_location'],works['biblio'],works['cited_by_api_url'],
+                        works['cited_by_count'],works['counts_by_year'],works['doi'],works['is_retracted'],works['locations'],
                         works['primary_location'],works['publication_date'],works['type'],
                         works['updated_date'],
-                           works['referenced_works']))
+                        works['publication_year'],works['referenced_works'], works['related_works']))
 
 
 work_for_write = collect_openalex()
