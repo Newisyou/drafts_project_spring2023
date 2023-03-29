@@ -48,3 +48,9 @@ ____
 ## Граф Out-Degree
 
 ![граф out-degree](https://user-images.githubusercontent.com/91333734/228655905-369803c8-0524-4d07-93c3-5671f6345796.png)
+
+____
+
+### Работа, которая больше всего цитирует: https://openalex.org/works/W4210956772
+
+### Работа, на которую больше всего ссылаются: https://openalex.org/W2071892601
