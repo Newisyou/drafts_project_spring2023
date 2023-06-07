@@ -21,4 +21,4 @@ csv_graph['referenced_works'] = csv_graph['referenced_works'].str.replace(" ", '
 new = csv_graph['referenced_works'].str.split(',', expand=True)
 new = new.fillna('')
 final_pd = pd.concat([csv_graph['id'], new], axis=1)
-final_pd.to_csv('cites.csv', index=False, header=None)
+# final_pd.to_csv('cites.csv', index=False, header=None)
